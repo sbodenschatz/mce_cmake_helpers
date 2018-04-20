@@ -65,8 +65,8 @@ set(_ZLIB_SEARCH_NORMAL
   )
 list(APPEND _ZLIB_SEARCHES _ZLIB_SEARCH_NORMAL)
 
-set(ZLIB_NAMES zlibstatic z.a)
-set(ZLIB_NAMES_DEBUG zlibstatic z.a)
+set(ZLIB_NAMES zlibstatic z.${CMAKE_STATIC_LIBRARY_SUFFIX})
+set(ZLIB_NAMES_DEBUG zlibstaticd zd.${CMAKE_STATIC_LIBRARY_SUFFIX})
 
 # Try each search configuration.
 foreach(search ${_ZLIB_SEARCHES})
