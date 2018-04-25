@@ -1,3 +1,5 @@
+include_guard()
+
 if(NOT DEFINED BUILD_SCRIPTS_MAX_LEVELS)
 	set(BUILD_SCRIPTS_MAX_LEVELS 5)
 endif()
