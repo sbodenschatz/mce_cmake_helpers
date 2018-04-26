@@ -1,7 +1,9 @@
 include_guard()
 
-if(NOT MSVC)
-	if(NOT (CMAKE_BUILD_TYPE STREQUAL Debug) AND NOT (CMAKE_BUILD_TYPE STREQUAL Release))
+if(NOT DEFINED CMAKE_CONFIGURATION_TYPES)
+	set(MCE_CONFIGURATION_TYPES Release Debug MinSizeRel RelWithDebInfo)
+	if(NOT CMAKE_BUILD_TYPE IN_LIST MCE_CONFIGURATION_TYPES)
+		message(WARNING "No valid BUILD_TYPE given, defaulting to Release. Set CMAKE_BUILD_TYPE to one of {Release,Debug,MinSizeRel,RelWithDebInfo}.")
 		set(CMAKE_BUILD_TYPE Release)
 	endif()
 endif()
