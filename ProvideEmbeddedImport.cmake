@@ -1,0 +1,12 @@
+include_guard()
+
+function(provide_embedded_import NAMESPACE TARGET)
+	get_target_property(TARGET_NAME ${TARGET} EXPORT_NAME)
+	if(NOT TARGET_NAME)
+		set(TARGET_NAME ${TARGET})
+	endif()
+	if(NOT TARGET ${NAMESPACE}${TARGET_NAME})
+		add_library(${NAMESPACE}${TARGET_NAME} INTERFACE IMPORTED GLOBAL)
+		target_link_libraries(${NAMESPACE}${TARGET_NAME} INTERFACE ${TARGET})
+	endif()
+endfunction()
